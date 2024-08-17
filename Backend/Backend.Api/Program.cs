@@ -1,3 +1,7 @@
+using Backend.Storage.DependencyInjection;
+using Backend.Domain.Entities;
+using Backend.Storage.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+var dbConn = builder.Configuration["DatabaseConnectionString"];
+builder.Services.StorageServices(dbConn);
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
