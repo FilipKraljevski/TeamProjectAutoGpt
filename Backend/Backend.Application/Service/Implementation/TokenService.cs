@@ -33,7 +33,8 @@ namespace Backend.Application.Service.Implementation
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = creds,
-                Issuer = _configuration["JWT:Issuer"]
+                Issuer = _configuration["JWT:Issuer"],
+                Audience = _configuration["JWT:Audience"]
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
