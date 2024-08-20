@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Backend.Application.Dtos.Request;
 using Backend.Application.Dtos.Response;
 using Backend.Application.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Api.Controllers
 {
@@ -13,12 +14,14 @@ namespace Backend.Api.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITokenService _tokenService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, ITokenService tokenService)
+        public AccountController(UserManager<ApplicationUser> userManager, ITokenService tokenService, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _tokenService = tokenService;
+            _signInManager = signInManager;
         }
 
         [HttpPost("register")]
@@ -52,6 +55,33 @@ namespace Backend.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginRequest.Username);
+
+            if (user == null)
+                return Unauthorized("Invalid username");
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginRequest.Password, false);
+
+            if(!result.Succeeded)
+                return Unauthorized("Username not found or password incorrect");
+
+            LoginResponse response = new LoginResponse
+            {
+                Username = user.UserName,
+                Email = user.Email,
+                Token = _tokenService.CreateToken(user)
+            };
+
+            return Ok(response);
         }
     }
 }
