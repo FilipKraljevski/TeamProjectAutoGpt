@@ -6,6 +6,7 @@ using Backend.Application.Dtos.Request;
 using Backend.Application.Dtos.Response;
 using Backend.Application.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Api.Controllers
 {
@@ -82,6 +83,13 @@ namespace Backend.Api.Controllers
             };
 
             return Ok(response);
+        }
+
+        [HttpGet("testToken")]
+        [Authorize]
+        public async Task<IActionResult> Test()
+        {
+            return Ok("Authorized");
         }
     }
 }
