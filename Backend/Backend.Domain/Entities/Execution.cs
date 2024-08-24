@@ -1,0 +1,25 @@
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Backend.Domain.Entities
+{
+    public class Execution
+    {
+        public int Id { get; set; }
+        public string Input { get; set; }
+        public string Output { get; set; }
+
+        public DateTime DateTime { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
+
+        public AgptBlock AgptBlock { get; set; }
+        public string AgptBlockId { get; set; }
+
+    }
+}
