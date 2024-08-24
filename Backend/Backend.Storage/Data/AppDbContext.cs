@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Backend.Storage.Data
 {
@@ -17,6 +18,8 @@ namespace Backend.Storage.Data
             base.OnModelCreating(builder);
 
             //AgptBlock
+            builder.Entity<AgptBlock>().ToTable("AgptBlocks");
+
             builder.Entity<AgptBlock>()
                 .HasKey(b => b.Id);
 
@@ -26,6 +29,8 @@ namespace Backend.Storage.Data
 
 
             //Execution
+            builder.Entity<Execution>().ToTable("Executions");
+
             builder.Entity<Execution>()
                 .HasKey(e => e.Id);
 
@@ -53,6 +58,8 @@ namespace Backend.Storage.Data
                 .HasForeignKey(e => e.AgptBlockId)
                 .IsRequired();
         }
+        public DbSet<AgptBlock> AgptBlocks { get; set; }
+        public DbSet<Execution> Executions { get; set;}
 
     }
 }

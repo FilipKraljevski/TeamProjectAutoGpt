@@ -33,7 +33,7 @@ namespace Backend.Storage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AgptBlock");
+                    b.ToTable("AgptBlocks", (string)null);
                 });
 
             modelBuilder.Entity("Backend.Domain.Entities.ApplicationUser", b =>
@@ -133,7 +133,7 @@ namespace Backend.Storage.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Execution");
+                    b.ToTable("Executions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
