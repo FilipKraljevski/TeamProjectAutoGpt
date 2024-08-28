@@ -8,6 +8,7 @@ using Backend.Application.Service.Implementation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Backend.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,6 +90,8 @@ builder.Services.AddAuthentication(options =>
             System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigninKey"]))
     };
 });
+
+builder.Services.AddAutoMapper(typeof(ApplicationAssemblyMarker).Assembly);
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 
