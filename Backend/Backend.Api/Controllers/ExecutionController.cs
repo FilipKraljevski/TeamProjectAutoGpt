@@ -1,5 +1,5 @@
 ﻿using Backend.Api.Extensions;
-using Backend.Application.Dtos;
+using Backend.Application.Dtos.Request;
 using Backend.Application.Service.Interfaces;
 using Backend.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -33,7 +33,7 @@ namespace Backend.Api.Controllers
 
         [HttpPost("agptBlock/{agptBlockId}/save")]
         [Authorize]
-        public async Task<IActionResult> Create(ExecutionDto executionDto, [FromRoute] string agptBlockId)
+        public async Task<IActionResult> Create(ExecutionRequest executionDto, [FromRoute] string agptBlockId)
         {
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);

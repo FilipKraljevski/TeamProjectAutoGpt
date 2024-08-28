@@ -1,4 +1,5 @@
-﻿using Backend.Application.Dtos;
+﻿using Backend.Application.Dtos.Request;
+using Backend.Application.Dtos.Response;
 using Backend.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace Backend.Application.Service.Interfaces
 {
     public interface IExecutionService
     {
-        Task<Execution> Create(ExecutionDto executionDto, string userId, string agptBlockId);
+        Task<ExecutionResponse> Create(ExecutionRequest executionDto, string userId, string agptBlockId);
     }
 }

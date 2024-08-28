@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace Backend.Application.Profiles
 {
-    public class AgptBlockProfile : Profile
+    public class ExecutionProfile : Profile
     {
-        public AgptBlockProfile()
+        public ExecutionProfile()
         {
-            CreateMap<AgptBlock, AgptBlockResponse>();
+            CreateMap<Execution, ExecutionResponse>()
+                .ForMember(dest => dest.AgptBlockResponse, opt => opt.MapFrom(src => src.AgptBlock));
         }
     }
 }

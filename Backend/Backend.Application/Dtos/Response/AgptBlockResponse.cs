@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Application.Dtos
+namespace Backend.Application.Dtos.Response
 {
-    public class AgptBlockDto
+    public class AgptBlockResponse
     {
         public string Id { get; set; }
         public string Name { get; set; }
