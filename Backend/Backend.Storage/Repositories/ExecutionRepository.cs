@@ -18,6 +18,13 @@ namespace Backend.Storage.Repositories
         {
             _context = context;
         }
+
+        public async Task<Execution?> GetByIdAsync(int id)
+        {
+            return await _context.Executions
+                .Include(e => e.AgptBlock)
+                .FirstOrDefaultAsync(e => e.Id == id);
+        }
         public async Task<Execution> CreateAsync(Execution execution)
         {
             await _context.Executions.AddAsync(execution);
@@ -57,6 +64,5 @@ namespace Backend.Storage.Repositories
                     .Where(e => e.DateTime.Date == dateTime.Date)
                     .ToListAsync();
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Backend.Api.Extensions;
 using Backend.Application.Dtos.Request;
+using Backend.Application.Service.Implementation;
 using Backend.Application.Service.Interfaces;
 using Backend.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -21,6 +22,18 @@ namespace Backend.Api.Controllers
             _executionService = executionService;
             _blockService = agptBlockService;
             _userManager = userManager;
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var execution = await _executionService.GetById(id);
+            if (execution == null)
+            {
+                return NotFound();
+            }
+            return Ok(execution);
         }
 
         [HttpGet]

@@ -17,6 +17,17 @@ namespace Backend.Application.Service.Implementation
             _executionRepository = executionRepository;
             _mapper = mapper;
         }
+
+        public async Task<ExecutionResponse> GetById(int id)
+        {
+            var execution = await _executionRepository.GetByIdAsync(id);
+
+            if (execution == null)
+            {
+                throw new InvalidOperationException("Execution does not exist");
+            }
+            return _mapper.Map<ExecutionResponse>(execution);
+        }
         public async Task<ExecutionResponse> Create(ExecutionRequest executionDto, string userId, string agptBlockId)
         {
             Execution execution = new Execution

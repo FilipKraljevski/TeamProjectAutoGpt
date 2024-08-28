@@ -9,6 +9,7 @@ namespace Backend.Application.Interfaces
 {
     public interface IExecutionRepository
     {
+        Task<Execution?> GetByIdAsync(int id); 
         Task<List<Execution>> GetAllAsync(string userId);
         Task<List<Execution>> GetAllByAgptBlockAsync(string userId, string agptBlockId);
         Task<List<Execution>> GetAllByDateAsync(string userId, DateTime dateTime);
