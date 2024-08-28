@@ -1,5 +1,7 @@
 ﻿
 
+using Newtonsoft.Json;
+
 namespace Backend.Domain.Entities
 {
     public class Execution
@@ -10,9 +12,11 @@ namespace Backend.Domain.Entities
 
         public DateTime DateTime { get; set; }
 
+        [JsonIgnore]
         public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
 
+        [JsonIgnore]
         public AgptBlock AgptBlock { get; set; }
         public string AgptBlockId { get; set; }
 

@@ -21,6 +21,9 @@ namespace Backend.Storage.DependencyInjection
             services.AddScoped<IAgptBlockRepository, AgptBlockRepository>();
             services.AddScoped<IAgptBlockService, AgptBlockService>();
 
+            services.AddScoped<IExecutionRepository, ExecutionRepository>();
+            services.AddScoped<IExecutionService, ExecutionService>();
+
 
             return services;
         }
