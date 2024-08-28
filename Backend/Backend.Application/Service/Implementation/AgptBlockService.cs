@@ -2,7 +2,6 @@
 using Backend.Application.Dtos.Response;
 using Backend.Application.Interfaces;
 using Backend.Application.Service.Interfaces;
-using Backend.Domain.Entities;
 
 
 namespace Backend.Application.Service.Implementation

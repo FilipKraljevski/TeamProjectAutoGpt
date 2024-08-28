@@ -1,5 +1,4 @@
-﻿using Backend.Domain.Entities;
-using Backend.Application.Dtos.Response;
+﻿using Backend.Application.Dtos.Response;
 
 
 namespace Backend.Application.Service.Interfaces

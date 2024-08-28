@@ -2,11 +2,6 @@
 using Backend.Domain.Entities;
 using Backend.Storage.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Backend.Storage.Repositories
 {

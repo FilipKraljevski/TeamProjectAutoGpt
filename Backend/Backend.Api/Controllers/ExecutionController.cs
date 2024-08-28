@@ -1,6 +1,5 @@
 ﻿using Backend.Api.Extensions;
 using Backend.Application.Dtos.Request;
-using Backend.Application.Service.Implementation;
 using Backend.Application.Service.Interfaces;
 using Backend.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -60,7 +59,6 @@ namespace Backend.Api.Controllers
                 return NotFound("AgptBlock does not exist");
             }
 
-            //await _executionService.Create(executionDto, appUser.Id, agptBlock.Id);
             return Ok(await _executionService.Create(executionDto, appUser.Id, agptBlock.Id));
         }
 

@@ -1,12 +1,10 @@
-﻿using Backend.Domain.Entities;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Backend.Application.Dtos.Request;
+﻿using Backend.Application.Dtos.Request;
 using Backend.Application.Dtos.Response;
 using Backend.Application.Service.Interfaces;
+using Backend.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Api.Controllers
 {
