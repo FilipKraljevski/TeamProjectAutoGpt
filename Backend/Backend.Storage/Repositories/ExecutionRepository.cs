@@ -64,5 +64,18 @@ namespace Backend.Storage.Repositories
                     .Where(e => e.DateTime.Date == dateTime.Date)
                     .ToListAsync();
         }
+
+        public async Task<bool> DeleteByIdAsync(int id)
+        {
+            var execution = await _context.Executions.FindAsync(id);
+
+            if (execution != null)
+            {
+                _context.Executions.Remove(execution);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
     }
 }

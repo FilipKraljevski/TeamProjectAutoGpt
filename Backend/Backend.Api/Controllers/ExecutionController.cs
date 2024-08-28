@@ -63,5 +63,18 @@ namespace Backend.Api.Controllers
             //await _executionService.Create(executionDto, appUser.Id, agptBlock.Id);
             return Ok(await _executionService.Create(executionDto, appUser.Id, agptBlock.Id));
         }
+
+        [HttpDelete("{id}/delete")]
+        [Authorize]
+        public async Task<IActionResult> DeleteById([FromRoute] int id)
+        {
+            var result = await _executionService.DeleteById(id);
+
+            if(result)
+            {
+                return Ok("Deleted successfully");
+            }
+            return BadRequest();
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace Backend.Application.Interfaces
         Task<List<Execution>> GetAllByDateAsync(string userId, DateTime dateTime);
         Task<List<Execution>> GetAllByAgptBlockAndDateAsync(string userId, string agptBlockId, DateTime dateTime);
         Task<Execution> CreateAsync(Execution execution);
+        Task<bool> DeleteByIdAsync(int id);
     }
 }

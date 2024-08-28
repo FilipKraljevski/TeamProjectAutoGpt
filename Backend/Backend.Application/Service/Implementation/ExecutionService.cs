@@ -70,5 +70,10 @@ namespace Backend.Application.Service.Implementation
 
             return executionResponses;
         }
+
+        public async Task<bool> DeleteById(int id)
+        {
+            return await _executionRepository.DeleteByIdAsync(id);
+        }
     }
 }

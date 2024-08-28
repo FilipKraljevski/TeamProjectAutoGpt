@@ -14,5 +14,6 @@ namespace Backend.Application.Service.Interfaces
         Task<ExecutionResponse> GetById(int id);
         Task<List<ExecutionResponse>> GetAllFiltered(string userId, string? agptBlockId, DateTime? dateTime);
         Task<ExecutionResponse> Create(ExecutionRequest executionDto, string userId, string agptBlockId);
+        Task<bool> DeleteById(int id);
     }
 }
