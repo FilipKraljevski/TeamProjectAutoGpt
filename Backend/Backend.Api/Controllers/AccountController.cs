@@ -84,12 +84,5 @@ namespace Backend.Api.Controllers
 
             return Ok(response);
         }
-
-        [HttpGet("testToken")]
-        [Authorize]
-        public async Task<IActionResult> Test()
-        {
-            return Ok("Authorized");
-        }
     }
 }

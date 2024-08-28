@@ -11,6 +11,7 @@ namespace Backend.Application.Service.Interfaces
 {
     public interface IExecutionService
     {
+        Task<List<ExecutionResponse>> GetAllFiltered(string userId, string? agptBlockId, DateTime? dateTime);
         Task<ExecutionResponse> Create(ExecutionRequest executionDto, string userId, string agptBlockId);
     }
 }

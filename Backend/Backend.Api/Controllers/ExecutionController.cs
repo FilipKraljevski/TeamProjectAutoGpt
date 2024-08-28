@@ -25,10 +25,12 @@ namespace Backend.Api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> getUsernameFromToken()
+        public async Task<IActionResult> GetExecutions([FromQuery] string? agptBlockId, [FromQuery] DateTime? dateTime)
         {
             var username = User.GetUsername();
-            return Ok(username);
+            var appUser = await _userManager.FindByNameAsync(username);
+
+            return Ok(await _executionService.GetAllFiltered(appUser.Id, agptBlockId, dateTime));
         }
 
         [HttpPost("agptBlock/{agptBlockId}/save")]

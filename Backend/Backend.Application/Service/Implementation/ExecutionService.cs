@@ -32,5 +32,32 @@ namespace Backend.Application.Service.Implementation
 
             return _mapper.Map<ExecutionResponse>(savedExecution);
         }
+
+        public async Task<List<ExecutionResponse>> GetAllFiltered(string userId, string? agptBlockId, DateTime? dateTime)
+        {
+            var executions = new List<Execution>();
+
+
+            if(agptBlockId != null && dateTime.HasValue)
+            {
+                executions = await _executionRepository.GetAllByAgptBlockAndDateAsync(userId, agptBlockId, dateTime.Value);
+            }
+            else if(dateTime.HasValue)
+            {
+                executions = await _executionRepository.GetAllByDateAsync(userId, dateTime.Value);
+            }
+            else if(agptBlockId != null)
+            {
+                executions = await _executionRepository.GetAllByAgptBlockAsync(userId, agptBlockId);
+            }
+            else
+            {
+                executions = await _executionRepository.GetAllAsync(userId);
+            }
+
+            var executionResponses = executions.Select(e => _mapper.Map<ExecutionResponse>(e)).ToList();
+
+            return executionResponses;
+        }
     }
 }

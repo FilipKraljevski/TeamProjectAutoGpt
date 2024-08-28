@@ -29,7 +29,7 @@ namespace Backend.Application.Service.Implementation
 
             if (agptBlock == null)
             {
-                return null;
+                throw new InvalidOperationException("AgptBlock does not exist");
             }
             return _mapper.Map<AgptBlockResponse>(agptBlock);
         }
