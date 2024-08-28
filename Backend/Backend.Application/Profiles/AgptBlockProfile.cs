@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using Backend.Application.Dtos;
+using Backend.Application.Dtos.Response;
 using Backend.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Backend.Application.Profiles
 {
@@ -13,7 +8,7 @@ namespace Backend.Application.Profiles
     {
         public AgptBlockProfile()
         {
-            CreateMap<AgptBlock, AgptBlockDto>();
+            CreateMap<AgptBlock, AgptBlockResponse>();
         }
     }
 }

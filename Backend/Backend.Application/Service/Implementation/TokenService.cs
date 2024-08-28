@@ -1,11 +1,9 @@
 ﻿using Backend.Application.Service.Interfaces;
 using Backend.Domain.Entities;
 using Microsoft.Extensions.Configuration;
-//using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 
 namespace Backend.Application.Service.Implementation
 {

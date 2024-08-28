@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using Backend.Application.Dtos;
+using Backend.Application.Dtos.Response;
 using Backend.Application.Interfaces;
 using Backend.Application.Service.Interfaces;
-using Backend.Domain.Entities;
 
 
 namespace Backend.Application.Service.Implementation
@@ -17,21 +16,21 @@ namespace Backend.Application.Service.Implementation
             _agptBlockRepository = agptBlockRepository;
             _mapper = mapper;
         }
-        public async Task<List<AgptBlockDto>> GetAll()
+        public async Task<List<AgptBlockResponse>> GetAll()
         {
             var agptBlocks =  await _agptBlockRepository.GetAllAsync();
-            return agptBlocks.Select(block => _mapper.Map<AgptBlockDto>(block)).ToList();
+            return agptBlocks.Select(block => _mapper.Map<AgptBlockResponse>(block)).ToList();
         }
 
-        public async Task<AgptBlockDto> GetById(string id)
+        public async Task<AgptBlockResponse> GetById(string id)
         {
             var agptBlock = await _agptBlockRepository.GetByIdAsync(id);
 
             if (agptBlock == null)
             {
-                return null;
+                throw new InvalidOperationException("AgptBlock does not exist");
             }
-            return _mapper.Map<AgptBlockDto>(agptBlock);
+            return _mapper.Map<AgptBlockResponse>(agptBlock);
         }
     }
 }

@@ -1,14 +1,13 @@
-using Backend.Storage.DependencyInjection;
+using Backend.Application;
+using Backend.Application.Service.Implementation;
+using Backend.Application.Service.Interfaces;
 using Backend.Domain.Entities;
 using Backend.Storage.Data;
+using Backend.Storage.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Backend.Application.Service.Interfaces;
-using Backend.Application.Service.Implementation;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using Backend.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace Backend.Domain.Entities
 {
@@ -15,9 +10,11 @@ namespace Backend.Domain.Entities
 
         public DateTime DateTime { get; set; }
 
+        [JsonIgnore]
         public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
 
+        [JsonIgnore]
         public AgptBlock AgptBlock { get; set; }
         public string AgptBlockId { get; set; }
 
