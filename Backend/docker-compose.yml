@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  database:
+   image: postgres:15
+   environment:
+     POSTGRES_DB: agpt_pg
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: admin
+   ports:
+     - "1234:5432"
+   volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5018:80"  # Maps port 5018 on the host to port 80 on the container
+    environment:
+      - ASPNETCORE_HTTP_PORTS=80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DatabaseConnectionString=Server=database;Port=5432;Database=agpt_pg;User Id=postgres;Password=admin;
+    depends_on:
+      - database
+
+
+volumes:
+  postgres_data:
