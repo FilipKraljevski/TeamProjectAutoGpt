@@ -4,11 +4,13 @@ import { UserProvider } from './Context/useAuth';
 import LoginPage from './Pages/LoginPage';
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import BlockPage from './Pages/BlockPage';
 
 function App() {
 
   return (
     <UserProvider>
+      <BlockPage />
       <Outlet />
       <ToastContainer/>
     </UserProvider>

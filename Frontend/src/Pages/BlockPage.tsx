@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { getBlocksApi } from "../Services/BlockService";
 import { Block } from "../Models/Block";
+import Form from "../Components/Form";
 
 const BlockPage = () => {
     const [blocks, setBlocks] = useState<Block[]>([]);
     const [selectedBlock, setSelectedBlock] = useState("")
+    const [isInputFormReady, setIsInputFormReady] = useState(false)
 
     useEffect(() => {
         fetchBlocks()
@@ -16,8 +18,13 @@ const BlockPage = () => {
     };
 
     const handleBlockChange = (e: any) => {
-        const block = e.value;
+        const block = e.target.value;
         setSelectedBlock(block);
+        if(block){
+          setIsInputFormReady(true)
+        }else{
+          setIsInputFormReady(false)
+        }
     }
 
     return (
@@ -35,7 +42,7 @@ const BlockPage = () => {
                 </option>
             ))}
           </select>
-    
+          {isInputFormReady && <Form blockId={selectedBlock}/>}
         </div>
       );
 }
