@@ -13,3 +13,13 @@ export const getOutputFromAutoGpt = async(id: string, formData: any) => {
     })
     return response.data
 }
+
+export const saveResultToBackend = async(id: string, inputData: any, outputData: any) => {
+    const date = new Date().toLocaleString()
+    const response = await axios.post(api + "execution/agptBlock/"+ id + "/save", {
+        input: inputData,
+        output: outputData,
+        dateTime: date
+    })
+    return response.data
+}
