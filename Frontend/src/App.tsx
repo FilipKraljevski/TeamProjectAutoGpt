@@ -10,7 +10,6 @@ function App() {
 
   return (
     <UserProvider>
-      <BlockPage />
       <Outlet />
       <ToastContainer/>
     </UserProvider>

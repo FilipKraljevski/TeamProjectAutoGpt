@@ -49,7 +49,7 @@ export const UserProvider = ({children}: Props) => {
                 setToken(res?.data.token!)
                 setUser(userObj!)
                 toast.success("Register Success!")
-                //navigate("/search")
+                navigate("/blocks")
             }
         })
         .catch(() => toast.warning("Server error occured"))
@@ -68,7 +68,7 @@ export const UserProvider = ({children}: Props) => {
                 setToken(res?.data.token!)
                 setUser(userObj!)
                 toast.success("Login Success!")
-                //navigate("/search")
+                navigate("/blocks")
             }
         })
         .catch(() => toast.warning("Server error occured"))
