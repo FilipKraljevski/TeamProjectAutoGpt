@@ -13,7 +13,6 @@ function App() {
     <UserProvider>
       <Nav />
       <Outlet />
-      <ToastContainer/>
     </UserProvider>
   );
 }
